@@ -53,11 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animate();
 
-    // Parallax ligero en hero background
+    // NUEVO: Fondo dinámico
     const hero = document.getElementById('hero');
+    const backgrounds = [
+        'fondo1.jpg',
+        'fondo2.jpg',
+        'fondo3.jpg',
+        'fondo4.jpg',
+        'fondo5.jpg',
+        'fondo6.jpg'
+    ];
+    let currentBgIndex = 0;
+
+    function changeBackground() {
+        currentBgIndex = (currentBgIndex + 1) % backgrounds.length; // Cicla entre 0 y 5
+        hero.style.backgroundImage = `url('${backgrounds[currentBgIndex]}')`;
+    }
+
+    // Cambia cada 5 segundos (5000 ms). Ajusta si quieres más rápido/lento
+    setInterval(changeBackground, 5000);
+
+    // Parallax ligero en hero background (se mantiene, pero ahora con fondos dinámicos)
     window.addEventListener('scroll', () => {
         const scrollPos = window.scrollY;
-        hero.style.backgroundPositionY = `${scrollPos * 0.5}px`; // Movimiento sutil (funciona con imagen)
+        hero.style.backgroundPositionY = `${scrollPos * 0.5}px`; // Movimiento sutil
     });
 
     // Acción del botón (ejemplo: scroll a sección mensaje)

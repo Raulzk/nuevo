@@ -20,10 +20,15 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url('fondo4.jpg'); /* Imagen descargada como fondo profesional */
+    /* Fondo inicial (se cambiará dinámicamente) */
+    background-image: url('fondo1.jpg'); /* Empieza con el primero */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    /* Transición suave para cambios dinámicos */
+    transition: background-image 1s ease-in-out;
+    /* Parallax opcional, pero responsivo */
+    background-attachment: fixed; /* Fijo en desktop, se desactiva en mobile para rendimiento */
 }
 
 #confetti-canvas {
@@ -103,10 +108,19 @@ h2 {
     color: #FFD700;
 }
 
-/* Responsividad */
+/* Responsividad mejorada */
 @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
+    h1 { font-size: 2.5rem; } /* Reducido para móviles */
     p { font-size: 1.2rem; }
     .btn-animated { font-size: 1rem; padding: 10px 20px; }
     .message { padding: 60px 10px; }
+    .hero {
+        background-attachment: scroll; /* Evita problemas de rendimiento en mobile */
+        background-size: cover; /* Asegura que cubra bien en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .hero-content { padding: 10px; }
 }
